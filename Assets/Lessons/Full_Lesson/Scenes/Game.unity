@@ -250,7 +250,7 @@ MonoBehaviour:
   m_ReferencePixelsPerUnit: 18
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 320, y: 180}
-  m_ScreenMatchMode: 0
+  m_ScreenMatchMode: 1
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
@@ -11836,9 +11836,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3758978311668991345, guid: 5b0c3a785c87046d08a58bffc072e4e2, type: 3}
+      propertyPath: rb
+      value: 
+      objectReference: {fileID: 1440470672}
+    - target: {fileID: 3758978311668991345, guid: 5b0c3a785c87046d08a58bffc072e4e2, type: 3}
       propertyPath: maxLife
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 3758978311668991345, guid: 5b0c3a785c87046d08a58bffc072e4e2, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1440470671}
     - target: {fileID: 3758978311668991345, guid: 5b0c3a785c87046d08a58bffc072e4e2, type: 3}
       propertyPath: collider
       value: 
@@ -11852,7 +11860,15 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1536497601}
     - target: {fileID: 3758978311668991345, guid: 5b0c3a785c87046d08a58bffc072e4e2, type: 3}
+      propertyPath: spriteRenderer
+      value: 
+      objectReference: {fileID: 1701805466}
+    - target: {fileID: 3758978311668991345, guid: 5b0c3a785c87046d08a58bffc072e4e2, type: 3}
       propertyPath: groundLayer.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 3758978311668991345, guid: 5b0c3a785c87046d08a58bffc072e4e2, type: 3}
+      propertyPath: movementSettings.contactFilter.layerMask.m_Bits
       value: 64
       objectReference: {fileID: 0}
     - target: {fileID: 7883499935206821116, guid: 5b0c3a785c87046d08a58bffc072e4e2, type: 3}
@@ -11864,6 +11880,16 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5b0c3a785c87046d08a58bffc072e4e2, type: 3}
+--- !u!95 &1440470671 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 7857115634994505910, guid: 5b0c3a785c87046d08a58bffc072e4e2, type: 3}
+  m_PrefabInstance: {fileID: 1440470670}
+  m_PrefabAsset: {fileID: 0}
+--- !u!50 &1440470672 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 6245075266071584303, guid: 5b0c3a785c87046d08a58bffc072e4e2, type: 3}
+  m_PrefabInstance: {fileID: 1440470670}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1478584443
 GameObject:
   m_ObjectHideFlags: 0
@@ -13138,6 +13164,11 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!212 &1701805466 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 2885815247490803452, guid: 5b0c3a785c87046d08a58bffc072e4e2, type: 3}
+  m_PrefabInstance: {fileID: 1440470670}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1709807924
 GameObject:
   m_ObjectHideFlags: 0

@@ -21,13 +21,12 @@ public class MothScript : MonoBehaviour
         if (collision.TryGetComponent<PlayerScript>(
             out PlayerScript player))
         {
-            player.TakeDamage(1);
+            
+            Vector2 direction = new Vector2(
+                player.transform.position.x - transform.position.x,
+                0).normalized;
 
-            Vector2 direction = (
-                player.transform.position - transform.position
-            ).normalized;
-
-            player.ApplyKnockback(direction * knockbackForce);
+            player.TakeDamage(1, direction * knockbackForce);
         }
     }
 

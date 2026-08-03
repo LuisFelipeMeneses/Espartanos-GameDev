@@ -6,6 +6,7 @@ public class HitState : IPlayerState
     PlayerMovementSettings movementSettings;
 
     float duration;
+    Vector2 knockback;
 
     public HitState(PlayerMovement playerMovement, PlayerStateController stateController, PlayerMovementSettings movementSettings)
     {
@@ -17,6 +18,7 @@ public class HitState : IPlayerState
     public void Enter()
     {
         duration = movementSettings.knockbackDuration;
+        playerMovement.Knockback(knockback);
     }
 
     public void Exit()
@@ -36,5 +38,10 @@ public class HitState : IPlayerState
         {
             stateController.ChangeState<IdleState>();
         }
+    }
+
+    public void SetKnockback(Vector2 knockback)
+    {
+        this.knockback = knockback;
     }
 }

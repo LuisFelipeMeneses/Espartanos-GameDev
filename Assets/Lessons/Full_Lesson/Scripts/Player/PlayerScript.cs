@@ -17,6 +17,7 @@ public class PlayerScript : MonoBehaviour
     PlayerStateController stateController;
 
     public event Action<int, int> OnHealthChanged;
+    
 
     void Awake()
     {
@@ -31,6 +32,7 @@ public class PlayerScript : MonoBehaviour
         stateController.Register(new RunState(playerMovement, stateController, actions));
         stateController.Register(new JumpState(playerMovement, stateController, actions));
         stateController.Register(new HitState(playerMovement, stateController, movementSettings));
+        stateController.Register(new AttackState(actions, stateController, animator, playerMovement));
     }
 
     void OnEnable()
@@ -45,6 +47,7 @@ public class PlayerScript : MonoBehaviour
 
     void Start()
     {
+        OnHealthChanged?.Invoke(currentHealth, maxHealth);
         stateController.ChangeState<IdleState>();
     }
 
@@ -59,7 +62,6 @@ public class PlayerScript : MonoBehaviour
         animator.SetFloat("xSpeed", Math.Abs(playerMovement.linearVelocityX));
         animator.SetFloat("ySpeed", playerMovement.linearVelocityY);
         animator.SetBool("isJumping", !playerMovement.CheckGrounded());
-        //animator.SetBool("isAttacking", attackPressed);
         
     }
 
@@ -67,8 +69,13 @@ public class PlayerScript : MonoBehaviour
     {
         currentHealth -= damage;
         OnHealthChanged?.Invoke(currentHealth, maxHealth);
-        playerMovement.Knockback(knockback);
+        stateController.GetState<HitState>().SetKnockback(knockback);
         stateController.ChangeState<HitState>();
+    }
+
+    public void CancelAttack()
+    {
+        stateController.GetState<AttackState>().CancelAttack();
     }
     
 }

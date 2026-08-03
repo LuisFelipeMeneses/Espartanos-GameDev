@@ -18,14 +18,19 @@ public class IdleState : IPlayerState
 
     public void Update()
     {
-        if (actions.Keyboard.Move.ReadValue<float>() != 0)
-        {
-            stateController.ChangeState<RunState>();
-        }
-        else if (actions.Keyboard.Jump.IsPressed())
+        if (actions.Keyboard.Jump.IsPressed())
         {
             stateController.ChangeState<JumpState>();
         }
+        else if (actions.Keyboard.Attack.IsPressed())
+        {
+            stateController.ChangeState<AttackState>();
+        }
+        else if (actions.Keyboard.Move.ReadValue<float>() != 0)
+        {
+            stateController.ChangeState<RunState>();
+        }
+        
     }
 
     public void FixedUpdate()

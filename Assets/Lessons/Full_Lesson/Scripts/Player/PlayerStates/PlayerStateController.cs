@@ -21,6 +21,11 @@ public class PlayerStateController
         state.Enter();
     }
 
+    public T GetState<T>() where T : IPlayerState
+    {
+        return (T)states[typeof(T)];
+    }
+
     public void Update()
     {
         state?.Update();

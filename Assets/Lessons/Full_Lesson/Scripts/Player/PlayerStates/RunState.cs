@@ -24,7 +24,11 @@ public class RunState : IPlayerState
 
     public void FixedUpdate()
     {
-        if (actions.Keyboard.Move.ReadValue<float>() < 0)
+        if (actions.Keyboard.Attack.IsPressed())
+        {
+            stateController.ChangeState<AttackState>();
+        }
+        else if (actions.Keyboard.Move.ReadValue<float>() < 0)
         {
             movement.MoveX(-1);
         }

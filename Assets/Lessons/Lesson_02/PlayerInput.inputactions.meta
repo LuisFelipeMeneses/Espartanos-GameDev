@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e89eb4090a6ffefa1b1c7eeaf4d04d9e
+guid: 42da6fb4bb0926755bb0fbcf4654ed73
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -11,4 +11,4 @@ ScriptedImporter:
   generateWrapperCode: 1
   wrapperCodePath: 
   wrapperClassName: 
-  wrapperCodeNamespace: 
+  wrapperCodeNamespace: EspartanosGameDev.Lessons.Lesson02

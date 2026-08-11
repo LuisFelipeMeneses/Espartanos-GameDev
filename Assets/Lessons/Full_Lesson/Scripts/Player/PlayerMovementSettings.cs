@@ -9,7 +9,6 @@ public class PlayerMovementSettings
     public float checkDistance = 0.1f;
     public float minGroundNormalY = 0.65f;
     public ContactFilter2D contactFilter;
-
     public float knockbackDuration = 0.5f;
 
 }

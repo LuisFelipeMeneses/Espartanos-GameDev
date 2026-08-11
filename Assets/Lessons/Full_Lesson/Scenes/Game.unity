@@ -405,10 +405,10 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.12803347
-    y: 0
-    width: 0.7438401
-    height: 1
+    x: 0
+    y: 0.2232143
+    width: 1.0025126
+    height: 1.0019531
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
@@ -12688,7 +12688,7 @@ Tilemap:
       m_AnimatedSprites:
       - {fileID: -1688805477, guid: 06000f5040c287229af233ac2daaa979, type: 3}
       - {fileID: 2036442637, guid: 06000f5040c287229af233ac2daaa979, type: 3}
-      m_AnimationSpeed: 5
+      m_AnimationSpeed: 5.0000005
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 46, y: -1, z: 0}
@@ -12760,7 +12760,7 @@ Tilemap:
       m_AnimatedSprites:
       - {fileID: 1727495667, guid: 06000f5040c287229af233ac2daaa979, type: 3}
       - {fileID: 1476230402, guid: 06000f5040c287229af233ac2daaa979, type: 3}
-      m_AnimationSpeed: 5.0000005
+      m_AnimationSpeed: 5
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 47, y: 2, z: 0}

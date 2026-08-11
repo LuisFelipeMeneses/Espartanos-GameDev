@@ -18,7 +18,7 @@ public class PlayerMovement
 
     readonly PlayerMovementSettings settings;
 
-    RaycastHit2D[] raycastHits = new RaycastHit2D[8];
+    RaycastHit2D[] castHits = new RaycastHit2D[8];
 
     public PlayerMovement(Rigidbody2D rb, Collider2D collider, SpriteRenderer spriteRenderer, PlayerMovementSettings settings)
     {
@@ -58,10 +58,10 @@ public class PlayerMovement
 
     public bool CheckGrounded()
     {
-        int hitCount = collider.Cast(Vector2.down, settings.contactFilter, raycastHits, settings.checkDistance);
+        int hitCount = collider.Cast(Vector2.down, settings.contactFilter, castHits, settings.checkDistance);
         for (int i = 0; i < hitCount; i++)
         {
-            if (raycastHits[i].normal.y >= settings.minGroundNormalY)
+            if (castHits[i].normal.y >= settings.minGroundNormalY)
             {
                 return true;
             }

@@ -11,8 +11,11 @@ public class PlayerScript : MonoBehaviour
     PlayerInput inputs;
     Rigidbody2D rb;
     SpriteRenderer spriteRenderer;
-    BoxCollider2D boxCollider;
+    Collider2D collider;
     public LayerMask groundLayer;
+    public float rayDistance = 1.4f;
+    RaycastHit2D[] castHits = new RaycastHit2D[8];
+    public ContactFilter2D contactFilter;
 
     void Start()
     {
@@ -21,7 +24,7 @@ public class PlayerScript : MonoBehaviour
 
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        boxCollider = GetComponent<BoxCollider2D>();
+        collider = GetComponent<BoxCollider2D>();
     }
 
     void Update()
@@ -33,7 +36,8 @@ public class PlayerScript : MonoBehaviour
         //IsGroundedV1();
         //IsGroundedV2();
         //IsGroundedV3();
-        IsGroundedV4();
+        //IsGroundedV4();
+        //IsGroundedNormalCast();
 
         if (jumpPressed && isGrounded)
         {
@@ -65,7 +69,7 @@ public class PlayerScript : MonoBehaviour
 
     void IsGroundedV2()
     {
-        Vector2 position = new Vector2(boxCollider.bounds.center.x, boxCollider.bounds.min.y - 0.01f);
+        Vector2 position = new Vector2(collider.bounds.center.x, collider.bounds.min.y - 0.01f);
         RaycastHit2D hit = Physics2D.Raycast(position, Vector2.down, 0.1f);
         isGrounded = hit.collider != null;
         
@@ -75,7 +79,7 @@ public class PlayerScript : MonoBehaviour
 
     void IsGroundedV3()
     {
-        Vector2 position = new Vector2(boxCollider.bounds.center.x, boxCollider.bounds.min.y);
+        Vector2 position = new Vector2(collider.bounds.center.x, collider.bounds.min.y);
         RaycastHit2D hit = Physics2D.Raycast(position, Vector2.down, 0.1f, groundLayer);
         isGrounded = hit.collider != null;
         
@@ -85,11 +89,26 @@ public class PlayerScript : MonoBehaviour
 
     void IsGroundedV4()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 1.4f, groundLayer);
+        // Change the distance of the raycast to a variable that can be modified in the inspector
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, /*1.4f*/ rayDistance, groundLayer);
         isGrounded = hit.collider != null;
 
-        Debug.DrawRay(transform.position, Vector2.down * 1.4f, Color.red);
+        Debug.DrawRay(transform.position, Vector2.down * /*1.4f*/ rayDistance, Color.red);
         Debug.Log("Hit: " + hit.collider);
+    }
+
+    void IsGroundedNormalCast()
+    {
+        int hits = collider.Cast(Vector2.down, contactFilter, castHits, 0.1f);
+
+        for (int i = 0; i < hits; i++)
+        {
+            if (castHits[i].normal.y >= 0.9f)
+            {
+                isGrounded = true;
+                return;
+            }
+        }
     }
 }
 }

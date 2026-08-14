@@ -42,7 +42,6 @@ public class PlayerScript : MonoBehaviour
         rb.linearVelocityX = 1;
         rb.linearVelocityY = 1;
         */
-
     }
 }
 }
